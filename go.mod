@@ -4,7 +4,10 @@ go 1.17
 
 require github.com/gin-gonic/gin v1.8.0
 
-require github.com/joho/godotenv v1.4.0 // indirect
+require (
+	github.com/joho/godotenv v1.4.0 // indirect
+	github.com/sirupsen/logrus v1.8.1 // indirect
+)
 
 require (
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
