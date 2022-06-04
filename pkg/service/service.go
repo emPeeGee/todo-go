@@ -12,6 +12,9 @@ type Authorization interface {
 }
 
 type TodoList interface {
+	Create(userId int, list todo.TodoList) (int, error)
+	GetAll(userId int) ([]todo.TodoList, error)
+	GetListById(userId, listId int) (todo.TodoList, error)
 }
 
 type TodoItem interface{}
@@ -25,5 +28,6 @@ type Service struct {
 func NewService(repository *repository.Repository) *Service {
 	return &Service{
 		Authorization: NewAuthService(repository.Authorization),
+		TodoList:      NewTodoListService(repository.TodoList),
 	}
 }
