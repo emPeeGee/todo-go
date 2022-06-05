@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -38,6 +39,7 @@ type getAllListsResponse struct {
 }
 
 func (h *Handler) getAllLists(c *gin.Context) {
+	fmt.Println("hey you")
 	userId, err := getUserId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, "user id not found")
@@ -76,6 +78,31 @@ func (h *Handler) getListById(c *gin.Context) {
 	c.JSON(http.StatusOK, list)
 }
 
-func (h *Handler) updateList(c *gin.Context) {}
+func (h *Handler) updateList(c *gin.Context) {
+}
 
-func (h *Handler) deleteList(c *gin.Context) {}
+func (h *Handler) deleteList(c *gin.Context) {
+	fmt.Println("Hello")
+	userId, err := getUserId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, "not found")
+		return
+	}
+
+	fmt.Println("fasfsadd")
+
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "invalid id")
+	}
+
+	err = h.services.TodoList.Delete(userId, id)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, statusResponse{
+		Status: "Ok",
+	})
+}
