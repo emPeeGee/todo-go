@@ -56,7 +56,23 @@ Authorization: bearer {{auth_token}}
   "description": "Item 3"
 }
 
-
 ### Get all items from an list
 GET http://localhost:9000/api/lists/1/items
 Authorization: bearer {{auth_token}}
+
+### Get an item from
+GET http://localhost:9000/api/items/2
+Authorization: bearer {{auth_token}}
+
+### Delete an item
+DELETE http://localhost:9000/api/items/1
+Authorization: bearer {{auth_token}}
+
+### Update an item
+PUT http://localhost:9000/api/items/3
+Authorization: bearer {{auth_token}}
+
+{
+    "description": "Yeap",
+    "done": true
+}
