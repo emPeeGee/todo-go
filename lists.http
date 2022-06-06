@@ -46,3 +46,17 @@ Authorization: bearer {{auth_token}}
 {
   "description": "Description"
 }
+
+### Add item in the list
+POST http://localhost:9000/api/lists/1/items
+Authorization: bearer {{auth_token}}
+
+{
+  "title": "Third nice item",
+  "description": "Item 3"
+}
+
+
+### Get all items from an list
+GET http://localhost:9000/api/lists/1/items
+Authorization: bearer {{auth_token}}
