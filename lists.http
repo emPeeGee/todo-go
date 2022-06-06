@@ -1,0 +1,48 @@
+### Login
+POST http://localhost:9000/auth/sign-in
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "test"
+}
+
+> {%
+    client.global.set("auth_token", response.body.token);
+  %}
+
+### Register
+POST localhost:9000/auth/sign-up
+
+{
+  "name": "test",
+  "username": "test",
+  "password": "test"
+}
+
+### Get all Lists
+GET http://localhost:9000/api/lists/
+Accept: application/json
+Authorization: bearer {{auth_token}}
+
+### Get list by id
+GET http://localhost:9000/api/lists/1
+Accept: application/json
+Authorization: bearer {{auth_token}}
+
+### Add list item
+POST http://localhost:9000/api/lists/
+Authorization: bearer {{auth_token}}
+
+{
+  "title": "Milk",
+  "description": "Brand new Milk JLK"
+}
+
+### Update an list item
+PUT http://localhost:9000/api/lists/1
+Authorization: bearer {{auth_token}}
+
+{
+  "description": "Description"
+}

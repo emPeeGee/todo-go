@@ -2,7 +2,6 @@ package repository
 
 import (
 	"fmt"
-
 	"github.com/emPeeGee/todo-go"
 	"github.com/jmoiron/sqlx"
 )
